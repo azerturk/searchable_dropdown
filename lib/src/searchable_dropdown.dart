@@ -788,7 +788,7 @@ class _DropDownListViewState<T> extends State<_DropDownListView<T>> {
   }
 
   void scrollControllerListener({
-    double sensitivity = 150.0,
+    double sensitivity = 380.0,
     Duration throttleDuration = const Duration(milliseconds: 1000),
   }) {
     if (timer != null) return;
