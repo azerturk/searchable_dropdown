@@ -61,8 +61,7 @@ class SearchableDropdown<T> extends StatefulWidget {
     required Future<List<SearchableDropdownMenuItem<T>>?> Function(
       int,
       String?,
-    )?
-        paginatedRequest,
+    )? paginatedRequest,
     int? requestItemCount,
     Key? key,
     SearchableDropdownController<T>? controller,
@@ -790,7 +789,7 @@ class _DropDownListViewState<T> extends State<_DropDownListView<T>> {
 
   void scrollControllerListener({
     double sensitivity = 150.0,
-    Duration throttleDuration = const Duration(milliseconds: 400),
+    Duration throttleDuration = const Duration(milliseconds: 1000),
   }) {
     if (timer != null) return;
 
@@ -804,10 +803,13 @@ class _DropDownListViewState<T> extends State<_DropDownListView<T>> {
     if (maxScroll - currentScroll <= sensitivity) {
       if (searchText.isNotEmpty) {
         dropdownController.getItemsWithPaginatedRequest(
-            page: dropdownController.page, key: searchText,);
+          page: dropdownController.page,
+          key: searchText,
+        );
       } else {
         dropdownController.getItemsWithPaginatedRequest(
-            page: dropdownController.page,);
+          page: dropdownController.page,
+        );
       }
     }
   }
