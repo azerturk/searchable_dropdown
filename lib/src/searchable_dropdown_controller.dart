@@ -44,7 +44,8 @@ class SearchableDropdownController<T> {
     String? key,
     bool isNewSearch = false,
   }) async {
-    if (paginatedRequest == null) return;
+    if (paginatedRequest == null ||
+        status.value == SearchableDropdownStatus.busy) return;
     if (isNewSearch) {
       _page = 1;
       paginatedItemList.value = null;
